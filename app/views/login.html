@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="four columns">
+    <h5 class="t-center">Login</h5>
+    <div ng-controller="LoginCtrl">
+      <form name="loginForm" role="form" novalidate>
+        <input type="text" name="username" placeholder="Username" ng-model="username" class="u-full-width" required></input>
+        <input type="password" name="password" placeholder="Password" ng-model="password" class="u-full-width" required></input>
+        </br>
+        <button class="button button-primary" ng-click="submit()" ng-disabled="!(loginForm.$valid)">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="two columns">
+    <h5 class="t-center">Or</h5>
+  </div>
+
+  <div class="four columns">
+    <h5 class="t-center">Register</h5>
+    <div ng-controller="RegisterCtrl">
+      <form name="registerForm" role="form" novalidate>
+        <input type="text" id="username" placeholder="Username" class="u-full-width" ng-model="username" required></input>
+        <input type="password" id="password" placeholder="Password" class="u-full-width" ng-model="password" required></input>
+        <input type="password" id="passwordTwice" placeholder="Password" class="u-full-width" ng-model="passwordTwice" compare-to="password" required></input>
+        </br>
+        <button ng-click="submit()" ng-disabled="!(registerForm.$valid)" class="button button-primary u-pull-left">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

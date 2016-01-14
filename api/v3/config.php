@@ -1,0 +1,9 @@
+<?php
+  Flight::set("dbuser","root");
+  Flight::set("dbpass","");
+  Flight::set("dbhost","localhost");
+  Flight::set("dbport","3306");
+  Flight::set("dbname","backspace");
+  Flight::set("servername","localhost");
+  Flight::set("jwtkey","pLQ2kVEcFreAgIOKPA/g9BRJ1fnvNK3C6nFJHtF/VzG3AwPK/ciXtAgGhhOocBYpvzEHvhr2sl1zrjlLoL4riw==");
+?>

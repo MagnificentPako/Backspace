@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApp">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Backspace</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="app/css/normalize.css">
+  <link rel="stylesheet" href="app/css/skeleton.css">
+  <link rel="stylesheet" href="app/css/custom.css">
+  <link rel="stylesheet" href="app/css/toaster.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="app/img/favicon.png">
+
+</head>
+<body>
+
+  <script src="app/js/sha256.js"></script>
+  <script src="app/js/angular.min.js"></script>
+  <script src="app/js/angular.animate.js"></script>
+  <script src="app/js/angular.route.js"></script>
+  <script src="app/js/toaster.min.js"></script>
+  <script src="app/js/controllers.js"></script>
+  <script src="app/js/services.js"></script>
+  <script src="app/js/directives.js"></script>
+  <script src="app/js/app.js"></script>
+
+  <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <toaster-container></toaster-container>
+  <div class="container">
+    <section class="header">
+      <h2 class="title">Backspace</h2>
+    </section>
+
+    <nav class="navbar" ng-controller="NavCtrl">
+      <div class="container">
+        <ul class="navbar-list">
+          <li class="navbar-item"> <a href="#/" class="navbar-link">Home</a> </li>
+          <li class="navbar-item"> <a href="#/snippets" class="navbar-link">Snippets</a> </li>
+          <li class="navbar-item" ng-show="Auth.hasJWT()"> <a href="#/profile/{{Auth.getUsername()}}" class="navbar-link">{{Auth.getUsername()}}</a> </li>
+          <li class="navbar-item" ng-hide="Auth.hasJWT()"> <a href="#/login" class="navbar-link">Login</a> </li>
+          <li class="navbar-item" ng-show="Auth.hasJWT()"> <a href="#" ng-click="logout()" class="navbar-link">Logout</a> </li>
+        </ul>
+      </div>
+    </nav>
+    <div style="margin-top: 1em;"  ng-view></div>
+  </div>
+
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+</html>

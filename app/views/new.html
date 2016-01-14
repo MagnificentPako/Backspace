@@ -1,0 +1,25 @@
+<form name="newForm" ng-controller="NewCtrl">
+  <div class="row">
+    <div class="four columns">
+      <input class="u-full-width" type="text" ng-model="identifier" placeholder="Identifier" required></input>
+    </div>
+    <div class="four columns">
+      <input class="u-full-width" type="text" ng-model="name" placeholder="Name" required></input>
+    </div>
+    <div class="four columns">
+      <input class="u-full-width" type="text" ng-model="version" placeholder="Version" required></input>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+      <textarea auto-grow ng-model="code" placeholder="Code" class="u-full-width code-input" rows="1" required></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="three columns u-pull-right">
+      <button ng-click="new()" ng-disabled="!(newForm.$valid)" class="button button-primary u-pull-right">Submit</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,28 @@
+<div class="row" >
+  <div class="three columns">
+    <input class="u-full-width" type="text" placeholder="Name" ng-model="snippetName"></input>
+  </div>
+  <div class="three columns">
+    <input class="u-full-width" type="text" placeholder="Author" ng-model="snippetAuthor"></input>
+  </div>
+  <div class="six columns">
+     <button ng-click="newSnippet()" ng-controller="SnippetListCtrl" ng-disabled="!Auth.hasJWT()" class="button button-primary u-pull-right">New</button>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+    <table class="u-full-width" ng-controller="SnippetListCtrl" ng-init="loadSnippets()">
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Version</th>
+
+      </tr>
+      <tr class="list-entry" ng-click="openSnippet(snippet.identifier)" ng-repeat="snippet in snippets | name:snippetName | author:snippetAuthor">
+            <td>{{snippet.name}}</td>
+            <td>{{snippet.author}}</td>
+            <td>{{snippet.version}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

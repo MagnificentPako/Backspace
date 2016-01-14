@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="eight columns">
+    <h5><strong>{{snippet.name}}</strong> by <strong>{{snippet.author}}</strong></h5>
+  </div>
+  <div class="four columns">
+    <div class="u-pull-right">
+      <button class="button button-primary" ng-disabled="Auth.getUsername() != snippet.author">Edit</button>
+      <button class="button button-primary" ng-disabled="Auth.getUsername() != snippet.author">Delete</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="twelve columns">
+      <pre class="code">{{snippet.code}}</pre>
+  </div>
+</div>
