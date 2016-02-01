@@ -5,7 +5,7 @@
   <div class="four columns">
     <div class="u-pull-right">
       <button class="button button-primary" ng-disabled="Auth.getUsername() != snippet.author">Edit</button>
-      <button class="button button-primary" ng-disabled="Auth.getUsername() != snippet.author">Delete</button>
+      <button class="button button-primary" ng-click="delete(snippet.identifier)" ng-disabled="Auth.getUsername() != snippet.author">Delete</button>
     </div>
   </div>
 </div>

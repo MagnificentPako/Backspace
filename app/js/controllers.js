@@ -51,6 +51,10 @@ controllers.controller("SnippetViewCtrl", function($scope,Auth,$location,$routeP
   $scope.Auth = Auth;
   Auth.sendNormal("snippet",{"identifier":$routeParams["identifier"],"mode":"get"},function(response){
     $scope.snippet = response.data;
+    $scope.delete = function(identifier){
+      toaster.pop("wait","","deleting...");
+      Auth.sendSecured("snippet",{"identifier":$routeParams["identifier"],"mode":"delete"},function(response){toaster.pop("success","","Deleted.")},function(response){toaster.pop("error","","Something went wrong!")});
+    }
   },function(response){
     alert(response.data);
     toaster.pop("warning","","Snippet not found!");

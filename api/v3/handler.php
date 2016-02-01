@@ -5,7 +5,7 @@
       $sql = "SELECT * FROM users WHERE LOWER(name) LIKE LOWER(?) AND password LIKE(?)";
       $sth = Flight::db()->prepare($sql);
       $sth->bindParam(1,$data["username"]);
-      $sth->bindParam(2,$data["password"]);
+      $sth->bindParam(2,hash("sha256",$data["password"]));
       $sth->execute();
       $res = $sth->fetchAll();
       if(count($res) !== 1){Flight::error();return;}
@@ -23,7 +23,7 @@
       $sql = "INSERT INTO users(name,password) VALUES(?,?)";
       $sth = Flight::db()->prepare($sql);
       $sth->bindParam(1,$data["username"]);
-      $sth->bindParam(2,$data["password"]);
+      $sth->bindParam(2,hash("sha256",$data["password"]));
       $sth->execute();
       echo Flight::json(JWTHelper::generate(60*60,$data));
     }
@@ -76,6 +76,20 @@
         $sth->bindParam(3,$jwt->data->userName);
         $sth->bindParam(4,$data["version"]);
         $sth->bindParam(5,$data["code"]);
+        $sth->execute();
+      }elseif($mode==="delete"){
+        $sql = "SELECT * FROM snippets WHERE LOWER(identfier) LIKE LOWER(?)";
+        $sth = Flight::db()->prepare($sql);
+        $sth->bindParam(1,$data["identifier"]);
+        $sth->execute();
+        $res = $sth->fetchAll();
+        if(count($res) !== 1){
+          Flight::error();
+        }
+        $jwt = JWTHelper::authenticate(apache_request_headers());
+        $sql = "DELETE FROM snippets WHERE LOWER(identifier) LIKE LOWER(?)";
+        $sth = Flight::db()->prepare($sql);
+        $sth->bindParam(1,$data["identifier"]);
         $sth->execute();
       }
     }
